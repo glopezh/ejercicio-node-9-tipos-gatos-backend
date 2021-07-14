@@ -1,31 +1,37 @@
+require("dotenv").config();
 const express = require("express");
+
+
+// Pase lo que pase pete lo que pete primero quiero que se registre que tipop de petición llego
+
+const morgan = require("morgan");
 
 const app = express();
 
-app.listen(3010, (err) => {
-  if(err){
+// Settings
+app.set("port", process.env.PORT || 3000);
+
+// No olvidar de agregar el formato dev
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+
+app.listen(app.get("port"), (err) => {
+  if (err) {
     console.log("No se ha podido levantar el servidor");
     return;
   }
-  console.log("Servidor escuchando en el puerto 3010");
+  console.log(`Server on port ${app.set("port")}`);
 });
 
-// Creando cadena de middleware
-// Recoge la request y hace lo que quiere con ella xD
 
 // Por convencion : request = req , respuesta = res , siguiente = next
 
-app.use((req,res,next) =>{
-  console.log("Paso 1");
+// Rutas
+
+app.get("/", (req, res, next) => {
+  res.send("Hello World");
   next();
 });
 
-app.use((req,res,next) => {
-  console.log("Paso 2");
-  next();
-});
-
-app.use((req,res,next) => {
-  console.log("Paso 3");
-  next();
-});
