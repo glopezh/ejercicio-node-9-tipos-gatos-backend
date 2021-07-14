@@ -31,7 +31,34 @@ app.listen(app.get("port"), (err) => {
 // Rutas
 
 app.get("/", (req, res, next) => {
-  res.send("Hello World");
+  res.send("Hello Tipo de Gatos");
   next();
 });
+
+app.get("/tipos/listado", (req, res, next) => {
+  res.send("Listado de tipos de gatos");
+  next();
+});
+
+app.get("/tipos/tipo/:id", (req, res, next) => {
+  res.send("Mostrar tipo de gato por id");
+  next();
+});
+
+app.post("/tipos/nuevo-tipo", (req, res, next) => {
+  res.send("Añadir nuevo tipo de gato");
+  next();
+});
+
+app.put("/tipos/tipo/:id", (req, res, next) => {
+  res.send("Añadir nuevo tipo de gato");
+  next();
+});
+
+app.delete("/tipos/tipo/:id", (req, res, next) => {
+  res.send("Eliminar gatito por id");
+  next();
+});
+
+
 
