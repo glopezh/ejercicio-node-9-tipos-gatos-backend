@@ -1,5 +1,6 @@
 const {Schema, model} = require("mongoose");
 
+// Contrato 
 const TipoSchema = new Schema({
   id: {
     type: Number,
